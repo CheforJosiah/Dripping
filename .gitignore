@@ -1,0 +1,4 @@
+backend/.env
+backend/index.js
+frontend/package.json
+.vscode/settings.json
