@@ -16,7 +16,7 @@
   padding-bottom: 1.5rem;
 }
 
-.left-section {
+.footer .left-section {
   display: flex;
   flex-direction: column;
   margin-left: 2rem;
@@ -34,52 +34,52 @@
 .footer h4 {
   margin: 0;
 }
-.left-section .location, .left-section .phone {
+.footer .left-section .location, .footer .left-section .phone {
   color: white;
   font-size: 14px;
   margin: 0;
 }
 
-.left-section a {
+.footer .left-section a {
   color: red;
   text-decoration: none;
 }
 
-.left-section p {
+.footer .left-section p {
   font-size: 14px;
   color: gray;
   margin: 5px 0;
 }
-.left-section .copyright {
+.footer .left-section .copyright {
   color: white;
   margin-top: 2.5rem;
   font-size: 14px;
 }
 
 
-.middle-section {
+.footer .middle-section {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
 
-.middle-section a {
+.footer .middle-section a {
   color: gray;
   text-decoration: none;
 }
 
-.right-section {
+.footer .right-section {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin-right: 5rem;
   
 }
-.right-section a {
+.footer .right-section a {
   color: gray;
   text-decoration: none;
 }
-.right-section .socials {
+.footer .right-section .socials {
   margin-top: 2.5rem;
   display: flex;
   gap: 10px;justify-content: center;
@@ -90,13 +90,16 @@
 }
 
 @media (max-width: 768px) {
-  
-
-  .left-section, .right-section {
-    margin-left: 10px;
+  .footer {
+    margin: 0 auto;
   }
-
-  .right-section {
+  .footer .middle-section, .footer .right-section {
+    margin-top: 1rem;
+  }
+  .footer .middle-section a, .footer .right-section a {
+    font-size: 13px;
+  }
+  .footer .right-section {
     margin-right: 0;
   }
 }
@@ -110,26 +113,23 @@
     padding-bottom: 3rem;
     position: fixed;
   }
-  .left-section {
-    margin: 0;
-  }
-  .middle-section, .right-section {
+  .footer .middle-section, .footer .right-section {
     margin-top: 1rem;
   }
-  .middle-section a, .right-section a {
+  .footer .middle-section a, .footer .right-section a {
     font-size: 12px;
   }
-  .middle-section h4, .right-section h4 {
+  .footer .middle-section h4, .footer .right-section h4 {
     font-size: 14px;
   }
 }
 
 @media (max-width: 400px) {
-  .left-section .location, .left-section .phone {
+  .footer .left-section .location, .footer .left-section .phone {
     font-size: 12px;
   }
 
-  .left-section .copyright {
+  .footer .left-section .copyright {
     font-size: 12px;
   }
 }
