@@ -1,19 +1,26 @@
+import Logo from '../assets/logo.png'
+import phoneIcon from '../assets/icons/phone-call.png'
+import locationIcon from '../assets/icons/location-pin.png'
+import githubIcon from '../assets/icons/github (1).png'
+import linkedinIcon from '../assets/icons/linkedin.png'
+import twitterIcon from '../assets/icons/twitter.png'
+
 import './Footer.css'
 
 export function Footer() {
   return (
     <div className="footer">
       <div className="left-section">
-        <img className="logo" src="" alt="Logo" />
+        <img className="logo" src={Logo} alt="Logo" />
         <div className="contact">
           <p>If you have any questions, please contact us at</p>
           <a href="#">info@dripping.com</a>
           <div className="contact-info">
-            <div className="contact-icon"><img className='icon' src="" /></div>
+            <div className="contact-icon"><img className='icon' src={locationIcon} /></div>
             <p>Mile 6, Adjacent Mawa Hotel, Bamenda</p>
           </div>
           <div className="contact-info">
-            <div className="contact-icon"><img className='icon' src="" /></div>
+            <div className="contact-icon"><img className='icon' src={phoneIcon} /></div>
             <p>(+237) 673727996</p>
           </div>
         </div>
@@ -33,11 +40,12 @@ export function Footer() {
         <a href="#">Privacy policy</a>
         <a href="#">Terms & conditions</a>
         <div className="socials">
-          <a href="#"><img className='icon' src="#" /></a>
-          <a href="#"><img className='icon' src="#" /></a>
-          <a href="#"><img className='icon' src="#" /></a>
+          <a href="#"><img className='icon' src={githubIcon} /></a>
+          <a href="#"><img className='icon' src={linkedinIcon} /></a>
+          <a href="#"><img className='icon' src={twitterIcon} /></a>
         </div>
       </div>
+
     </div>
   );
 }

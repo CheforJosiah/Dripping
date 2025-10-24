@@ -41,7 +41,7 @@
 
 .header .logo {
   display: block;
-  height: 150px;
+  height: 200px;
   margin-top: 1px;
 }
 
@@ -62,16 +62,18 @@
 
 .header .middle-section {
   flex: 1;
-  max-width: 300px;
+  max-width: 500px;
   margin-left: 10px;
   margin-right: 10px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .middle-section a {
   color: black;
   text-decoration: none;
+  font-size: 20px;
+  font-weight: 700;
 }
 
 
@@ -80,11 +82,11 @@
   display: flex;
   align-items: center;
   position: relative;
-  max-height: 25px;
+  max-height: 35px;
 }
 
 .header .cart-icon {
-  width: 25px;
+  width: 30px;
   margin-right: 5px;
 }
 
@@ -101,8 +103,8 @@
   font-weight: 700;
 
   position: absolute;
-  top: 7px;
-  right: 80px;
+  top: 3px;
+  right: 45px;
 
   width: 26px;
   text-align: center;
