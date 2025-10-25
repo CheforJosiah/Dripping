@@ -28,7 +28,7 @@ export function ProductPage() {
 
         <div className="directory">
           <h5>Accessories</h5>
-          <p>Home>Shop Page>Accessories</p>
+          <p>Home&gt;Shop Page&gt;Accessories</p>
         </div>
         <div className="products-grid">
           <div className="product-container">
