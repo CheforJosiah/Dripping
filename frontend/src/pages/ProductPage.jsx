@@ -1,12 +1,25 @@
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
-import searchIcon from '../assets/icons/magnifying-glass.png'
-import "./ProductPage.css"
+import { useEffect, useState } from "react";
+import searchIcon from "../assets/icons/magnifying-glass.png";
+import axios from "axios";
+import "./ProductPage.css";
 
 export function ProductPage() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await axios.get("http://localhost:4000/api/products");
+      setProducts(response.data);
+      console.log(response.data);
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <>
-      <title>Products</title>
+      <title>Shop Page</title>
 
       <Header />
       <div className="product-page">
@@ -31,25 +44,37 @@ export function ProductPage() {
           <p>Home&gt;Shop Page&gt;Accessories</p>
         </div>
         <div className="products-grid">
-          <div className="product-container">
-            <div className="product-image-container">
-              <img className="product-image" src="" />
-            </div>
-            <div className="product-name">Dell OptPlex 5060 Micro Core</div>
+          {products.map((product) => {
+            return (
+              <div key={product.id} className="product-container">
+                <div className="product-image-container">
+                  <img className="product-image" src={product.image_url} />
+                </div>
+                <div className="product-name">{product.name}</div>
 
-            <div className="product-rating-container">
-              <img className="product-rating-stars" src="" />
-              <div className="product-rating-count link-primary"> </div>
-            </div>
+                <div className="product-rating-container">
+                  <img className="product-rating-stars" src={product.rating_url} />
+                  <div className="product-rating-count link-primary">{product.rating_count}</div>
+                </div>
 
-            <div className="product-price">45,000FCFA</div>
-          </div>
+                <div className="product-price">{product.price}</div>
+
+                <button className="add-to-cart-button button-primary">
+                  Add to Cart
+                </button>
+              </div>
+            );
+          })}
         </div>
 
         <div className="update">
-          <span className="line"><hr /></span>
+          <span className="line">
+            <hr />
+          </span>
           <h4>Stay Up To Date!</h4>
-          <span className="line"><hr /></span>
+          <span className="line">
+            <hr />
+          </span>
         </div>
         <div className="subscribe">
           <h4>Join Our Newsletter</h4>
@@ -58,7 +83,6 @@ export function ProductPage() {
             <button className="subs-btn">Subscribe</button>
           </div>
         </div>
-        
       </div>
 
       <Footer />
