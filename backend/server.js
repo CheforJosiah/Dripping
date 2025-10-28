@@ -16,7 +16,6 @@ app.get("/api/products", async (req, res) => {
 
   if (error) return res.status(400).json({ error });
   res.json(data);
-  console.log('Products fetched');
 });
 
 
