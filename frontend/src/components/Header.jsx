@@ -10,7 +10,7 @@ export function Header() {
         <div className="left-section">
           <a href="/" className="header-a">
             <img className="logo" src={Logo} alt='Logo' />
-            <img class="mobile-logo" src={MobileLogo} alt="logo"></img>
+            <img className="mobile-logo" src={MobileLogo} alt="logo"></img>
           </a>
         </div>
 
