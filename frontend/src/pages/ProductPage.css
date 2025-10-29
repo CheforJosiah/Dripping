@@ -270,17 +270,25 @@
   margin-bottom: 10px;
 }
 .product-page .add-to-cart-button {
-  width: 100%;
+  width: 70%;
   padding: 8px;
   height: 34px;
   margin-top: 1px;
+}
+
+.product-page .add-to-cart-button:hover {
+  background-color: darkgreen;
+}
+
+.product-page .add-to-cart-button:active {
+  transform: scale(0.98);
 }
 
 .button-primary {
   background-color: green;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 17px;
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
