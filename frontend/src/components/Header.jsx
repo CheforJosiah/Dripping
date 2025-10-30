@@ -16,13 +16,13 @@ export function Header() {
 
         <div className="middle-section">
           <a href="/">Home</a>
-          <a href="/products">Shop</a>
+          <a href="/shop">Shop</a>
           <a href="/pages">Pages</a>
           <a href="/about">About Us</a>
         </div>
 
         <div className="right-section">
-          <a className="cart-link header-link" href="/checkout">
+          <a className="cart-link header-link" href="/cart">
             <img className="cart-icon" src={CartIcon} alt='Cart' />
             <div className="cart-quantity">1</div>
             <div className="cart-text">Cart</div>
