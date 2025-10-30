@@ -50,6 +50,49 @@ app.delete("/api/products/:id", async (req, res) => {
 });
 
 
+app.get("/api/cart", async (req, res) => {
+  const { user_id } = req.params;
+
+  const { data, error } = await supabase
+    .from("cart_items")
+    .select(`id, quantity, product_id (id, name, price, image_url, category, rating)`)
+    .eq("user_id", "8e979bfa-b949-44c3-b096-0bb83007babc");
+
+  if (error) return res.status(400).json({ error });
+  res.json(data);
+});
+
+
+
+// app.get("/api/cart/:user_id", async (req, res) => {
+//   const { user_id } = req.params;
+
+//   try {
+//     const { data, error } = await supabase
+//       .from("cart_items")
+//       .select(`
+//         id,
+//         quantity,
+//         products (
+//           id,
+//           name,
+//           price,
+//           image_url,
+//           category,
+//           rating
+//         )
+//       `)
+//       .eq("user_id", "8e979bfa-b949-44c3-b096-0bb83007babc");
+
+//     if (error) throw error;
+//     res.json(data);
+//   } catch (err) {
+//     console.error("Error fetching cart items:", err.message);
+//     res.status(500).json({ error: err.message });
+//   }
+// });
+
+// Adding item to cart
 app.post("/cart/add", async (req, res) => {
   const { user_id, product_id, quantity } = req.body;
 

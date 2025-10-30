@@ -2,6 +2,8 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { useEffect, useState } from "react";
 import searchIcon from "../assets/icons/magnifying-glass.png";
+import viewIcon from "../assets/icons/view.png";
+import cartIcon from "../assets/icons/shopping-cart.png";
 import axios from "axios";
 import "./ProductPage.css";
 
@@ -54,10 +56,10 @@ export function ProductPage() {
               className="select"
             >
               <option value="All">All Categories</option>
-              <option value="phone">Phones</option>
-              <option value="laptop">Laptop</option>
-              <option value="desktop">Desktop</option>
-              <option value="gaming">Gaming</option>
+              <option value="Phones">Phones</option>
+              <option value="Laptops">Laptops</option>
+              <option value="Desktops">Desktops</option>
+              <option value="Gaming">Gaming</option>
             </select>
           </div>
           <input
@@ -83,6 +85,13 @@ export function ProductPage() {
               <div key={product.id} className="product-container">
                 <div className="product-image-container">
                   <img className="product-image" src={product.image_url} />
+                  <div className="product-overlay">
+                    <button className="view-details-button"><img src={viewIcon} /></button>
+                    <button
+                      onClick={() => addToCart(product)}
+                      className="add-to-cart-button"
+                    ><img src={cartIcon} /></button>
+                  </div>
                 </div>
                 <div className="product-name">{product.name}</div>
 
@@ -96,13 +105,7 @@ export function ProductPage() {
                   </div>
                 </div>
 
-                <div className="product-price">{product.price}</div>
-
-                <button className="add-to-cart-button button-primary" 
-                  onClick={() => addToCart(product)}
-                >
-                  Add to Cart
-                </button>
+                <div className="product-price">{product.price.toLocaleString()} FCFA</div>
               </div>
             );
           })}
