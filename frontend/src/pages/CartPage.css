@@ -40,6 +40,7 @@
 .order-summary-table td {
   padding: 12px 15px;
   text-align: left;
+  border-bottom: 1px solid #ddd;
 }
 .order-summary-table th {
   background-color: #f4f4f4;
@@ -110,4 +111,64 @@
   font-size: 22px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.product-image-container img {
+  width: 100px;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .checkout {
+    flex-direction: column;
+  }
+  .order-summary-table,
+  .payment-summary {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .product-image-container img {
+    width: 80px;
+  }
+  .product-image-container p,
+  .product-quantity span {
+    font-size: 16px;
+  }
+  .proceed-button {
+    font-size: 18px;
+    padding: 10px;
+  }
+  .order-summary-table th {
+    font-size: 12px;
+    font-weight: 500;
+    margin: 0;
+    padding: 2px;
+  }
+  .cart-page .directory p {
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  .total-row {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    padding-top: 10px;
+  }
+  .payment-summary .summary-header h3 {
+    font-size: 16px;
+    margin: 0;
+  }
+  .payment-summary .subtotal-row h5,
+  .payment-summary .subtotal-row p {
+    font-size: 14px;
+  }
+  .payment-summary {
+    padding: 10px;
+  }
+  .cart-page .total-row h4 {
+    font-size: 16px;
+    font-weight: 500;
+  }
 }

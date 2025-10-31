@@ -259,7 +259,7 @@
   max-width: 100%;
   max-height: 100%;
   border-radius: 5px;
-  padding: 10px;
+  object-fit: contain;
 }
 
 .product-page .product-name {
@@ -354,7 +354,5 @@
   width: 24px;
   height: 24px;
   margin-top: 8px;
-  position: relative;
-  z-index: 1;
   
 }

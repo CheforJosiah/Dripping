@@ -63,6 +63,33 @@ app.get("/api/cart", async (req, res) => {
 });
 
 
+// Deleting a cart item
+app.delete("/api/cart/:id", async (req, res) => {
+  const { id } = req.params;
+
+  const { data, error } = await supabase
+    .from("cart_items")
+    .delete()
+    .eq("id", id)
+    .select();
+
+  if (error) return res.status(400).json({ error });
+  res.json(data);
+});
+
+// Updating cart item quantity
+app.put("/api/cart/update", async (req, res) => {
+  const { id, quantity } = req.body;
+
+  const { data, error } = await supabase
+    .from("cart_items")
+    .update({ quantity })
+    .eq("id", id)
+    .select();
+
+  if (error) return res.status(400).json({ error });
+  res.json(data);
+});
 
 // app.get("/api/cart/:user_id", async (req, res) => {
 //   const { user_id } = req.params;
