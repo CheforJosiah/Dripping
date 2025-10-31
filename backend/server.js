@@ -49,7 +49,7 @@ app.delete("/api/products/:id", async (req, res) => {
   res.json(data);
 });
 
-
+// Getting cart items for a user
 app.get("/api/cart", async (req, res) => {
   const { user_id } = req.params;
 
