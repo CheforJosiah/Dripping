@@ -1,0 +1,264 @@
+/* ProductDetail.module.css */
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 16px;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: #222;
+  background: #fff;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  margin-bottom: 20px;
+  background: #f3fafc;
+  padding: 18px;
+  border-radius: 6px;
+}
+.breadcrumb h5.category {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #222;
+}
+.breadcrumb p {
+  font-size: 14px;
+  color: #777;
+}
+
+/* Top Section */
+.topRow {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+.leftCol, .rightCol {
+  flex: 1;
+  min-width: 350px;
+}
+
+/* Left column (images) */
+.imageWrap {
+  background: #f0fbff;
+  border: 1px solid #e6eef2;
+  padding: 28px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.mainImageBox {
+  width: 100%;
+  max-width: 450px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+.mainImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.thumbnailRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 14px;
+  justify-content: center;
+}
+.thumbBtn {
+  padding: 6px;
+  border-radius: 8px;
+  border: 1px solid #e3e6ea;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.thumbBtn:hover {
+  border-color: #31b6ff;
+}
+.thumbBtn img {
+  width: 84px;
+  height: 60px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Right column (details) */
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+.priceRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+.price {
+  color: #ff4f4f;
+  font-size: 22px;
+  font-weight: 700;
+}
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.stars {
+  color: #f08d49;
+}
+.ratingCount {
+  color: #888;
+  font-size: 13px;
+}
+
+/* Stock, Quantity, Buttons */
+.stockAdd {
+  margin-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.stock span {
+  font-weight: 700;
+}
+.inStock { color: green; }
+.outStock { color: #cc3b3b; }
+.qtyControl {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+.qtyBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+}
+.qtyBtn:hover {
+  background: #f0f0f0;
+}
+.qtyInput {
+  width: 44px;
+  text-align: center;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 6px;
+}
+.actionButtons {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+.primaryBtn {
+  background: #31b6ff;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.primaryBtn:hover {
+  background: #28a0e0;
+}
+.secondaryBtn {
+  background: transparent;
+  border: 1px solid #31b6ff;
+  color: #31b6ff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.secondaryBtn:hover {
+  background: #31b6ff;
+  color: white;
+}
+
+.meta {
+  margin-top: 12px;
+  color: #666;
+  font-size: 13px;
+}
+.metaValue {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Description Section */
+.descriptionSection {
+  margin-top: 36px;
+}
+.sectionTitle {
+  font-size: 20px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 16px;
+}
+.descriptionText {
+  color: #333;
+  white-space: pre-wrap;
+}
+.specs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.specs li {
+  margin-bottom: 6px;
+  color: #555;
+}
+
+/* Related Section */
+.relatedSection {
+  margin-top: 30px;
+}
+.relatedGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+.relatedCard {
+  border: 1px solid #eef6f9;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #fff;
+  transition: transform 0.2s ease;
+}
+.relatedCard:hover {
+  transform: translateY(-4px);
+}
+.relatedImageWrap img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+.relatedInfo {
+  padding: 10px;
+  text-align: center;
+}
+.relatedName {
+  font-size: 15px;
+  color: #111;
+  font-weight: 500;
+  text-decoration: none;
+}
+.relatedPrice {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ff4f4f;
+}
+
+/* Loading and Not Found */
+.loading, .notfound {
+  text-align: center;
+  padding: 40px;
+  color: #666;
+}
