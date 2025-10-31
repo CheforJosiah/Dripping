@@ -8,18 +8,19 @@ import axios from "axios";
 import "./ProductPage.css";
 import { useNavigate } from "react-router-dom";
 
-
 export function ProductPage() {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const goToDetails = (id) => {
-  navigate(`/products/${id}`);
-};
+    navigate(`/products/${id}`);
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
+      setLoading(true);
       let url = "http://localhost:4000/api/products";
 
       const params = new URLSearchParams();
@@ -30,6 +31,7 @@ export function ProductPage() {
       }
       const response = await axios.get(url);
       setProducts(response.data);
+      setLoading(false);
     };
     fetchProducts();
   }, [category, search]);
@@ -86,23 +88,30 @@ export function ProductPage() {
           <p>Home&gt;Shop Page&gt;{category}</p>
         </div>
         <div className="products-grid">
+          {loading && (
+            <div className="todo-loading">
+              <div className="loader"></div>Loading products...
+            </div>
+          )}
           {products.map((product) => {
             return (
               <div key={product.id} className="product-container">
                 <div className="product-image-container">
                   <img className="product-image" src={product.image_url} />
                   <div className="product-overlay">
-                   <button
-                     className="view-details-button"
-                   onClick={() => goToDetails(product.id)}
->
-                    <img src={viewIcon} alt="View Details" />
+                    <button
+                      className="view-details-button"
+                      onClick={() => goToDetails(product.id)}
+                    >
+                      <img src={viewIcon} alt="View Details" />
                     </button>
 
                     <button
                       onClick={() => addToCart(product)}
                       className="add-to-cart-button"
-                    ><img src={cartIcon} /></button>
+                    >
+                      <img src={cartIcon} />
+                    </button>
                   </div>
                 </div>
                 <div className="product-name">{product.name}</div>
@@ -117,7 +126,9 @@ export function ProductPage() {
                   </div>
                 </div>
 
-                <div className="product-price">{product.price.toLocaleString()} FCFA</div>
+                <div className="product-price">
+                  {product.price.toLocaleString()} FCFA
+                </div>
               </div>
             );
           })}

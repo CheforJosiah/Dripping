@@ -6,20 +6,49 @@ import { Footer } from "../components/Footer";
 
 export function CartPage() {
   const [cartItems, setCartItems] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Fetching cart items from backend
     const fetchCartItems = async () => {
+      setLoading(true);
       try {
         const response = await axios.get("http://localhost:4000/api/cart");
         setCartItems(response.data);
       } catch (error) {
         console.error("Error fetching cart items:", error);
       }
+      setLoading(false);
     };
 
     fetchCartItems();
   }, []);
+
+  const deleteCartItem = async (itemId) => {
+    try {
+      await axios.delete(`http://localhost:4000/api/cart/${itemId}`);
+      setCartItems((prevItems) =>
+        prevItems.filter((item) => item.id !== itemId)
+      );
+    } catch (error) {
+      console.error("Error deleting cart item:", error);
+    }
+  };
+  const updateCartItem = async (itemId, newQuantity) => {
+    try {
+      await axios.put("http://localhost:4000/api/cart/update", {
+        id: itemId,
+        quantity: newQuantity,
+      });
+      setCartItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === itemId ? { ...item, quantity: newQuantity } : item
+        )
+      );
+    } catch (error) {
+      console.error("Error updating cart item:", error);
+    }
+  };
 
   return (
     <>
@@ -29,6 +58,11 @@ export function CartPage() {
         <div className="directory">
           <p>Home&gt;Checkout&gt;Cart</p>
         </div>
+        {loading && (
+          <div className="cart-loading">
+            <div className="loader"></div>Loading cart items...
+          </div>
+        )}
         <div className="checkout">
           <table className="order-summary-table">
             <thead>
@@ -58,15 +92,34 @@ export function CartPage() {
                       {item.product_id.price} FCFA
                     </td>
                     <td className="product-quantity">
-                      <button className="quantity-button">-</button>
+                      <button
+                        className="quantity-button"
+                        onClick={() =>
+                          updateCartItem(item.id, item.quantity - 1)
+                        }
+                      >
+                        -
+                      </button>
                       <span className="quantity-number">{item.quantity}</span>
-                      <button className="quantity-button">+</button>
+                      <button
+                        className="quantity-button"
+                        onClick={() =>
+                          updateCartItem(item.id, item.quantity + 1)
+                        }
+                      >
+                        +
+                      </button>
                     </td>
                     <td className="product-subtotal">
                       {item.product_id.price * item.quantity} FCFA
                     </td>
                     <td>
-                      <button className="remove-button">Delete</button>
+                      <button
+                        className="remove-button"
+                        onClick={() => deleteCartItem(item.id)}
+                      >
+                        Delete
+                      </button>
                     </td>
                   </tr>
                 );
@@ -78,13 +131,21 @@ export function CartPage() {
               <h3>Cart Totals</h3>
               <div className="subtotal-row">
                 <h5>Subtotal</h5>
-                <p>200,000 FCFA</p>
+                <p>
+                  {cartItems.reduce(
+                    (total, item) =>
+                      total + item.product_id.price * item.quantity,
+                    0
+                  )}{" "}
+                  FCFA
+                </p>
               </div>
             </div>
             <div className="delivery-options">
               <div>Shipping</div>
               <div className="options">
-                <input type="radio" name="shipping" /> Free Shipping: 0 FCFA
+                <input type="radio" name="shipping" />
+                <span className="option1">Free Shipping: 0 FCFA </span>
                 <br />
                 <input type="radio" name="shipping" /> Flat Rate: 5,000 FCFA
                 <br />
@@ -95,7 +156,14 @@ export function CartPage() {
             </div>
             <div className="total-row">
               <h4>Total</h4>
-              <h4>205,000 FCFA</h4>
+              <h4>
+                {cartItems.reduce(
+                  (total, item) =>
+                    total + item.product_id.price * item.quantity,
+                  0
+                )}{" "}
+                FCFA
+              </h4>
             </div>
             <button className="proceed-button">Proceed to Checkout</button>
           </div>
