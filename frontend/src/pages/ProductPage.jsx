@@ -6,11 +6,17 @@ import viewIcon from "../assets/icons/view.png";
 import cartIcon from "../assets/icons/shopping-cart.png";
 import axios from "axios";
 import "./ProductPage.css";
+import { useNavigate } from "react-router-dom";
+
 
 export function ProductPage() {
   const [products, setProducts] = useState([]);
   const [category, setCategory] = useState("All");
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+  const goToDetails = (id) => {
+  navigate(`/products/${id}`);
+};
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -86,7 +92,13 @@ export function ProductPage() {
                 <div className="product-image-container">
                   <img className="product-image" src={product.image_url} />
                   <div className="product-overlay">
-                    <button className="view-details-button"><img src={viewIcon} /></button>
+                   <button
+                     className="view-details-button"
+                   onClick={() => goToDetails(product.id)}
+>
+                    <img src={viewIcon} alt="View Details" />
+                    </button>
+
                     <button
                       onClick={() => addToCart(product)}
                       className="add-to-cart-button"
